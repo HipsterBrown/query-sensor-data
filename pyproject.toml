@@ -1,0 +1,40 @@
+[project]
+name = "query-sensor-data"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "HipsterBrown", email = "headhipster@hipsterbrown.com" }
+]
+dependencies = [
+    "viam-sdk>=0.19.0",
+    "python-dotenv>=1.0.1",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+"query-sensor-data" = "query_sensor_data:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "jupyter>=1.0.0",
+    "matplotlib>=3.8.4",
+    "pandas>=2.2.2",
+    "nest-asyncio>=1.6.0",
+    "bokeh>=3.4.1",
+]
+
+[tool.rye.scripts]
+query = "python -m src.query_sensor_data"
+start-notebook = "jupyter notebook"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/query_sensor_data"]
